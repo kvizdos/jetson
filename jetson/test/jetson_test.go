@@ -6,8 +6,8 @@ import (
 	"github.com/kvizdos/jetson/jetson"
 )
 
-func newInMemoryScanner(data string, key string, value string, workers int) *jetson.LineScanner {
-	return &jetson.LineScanner{
+func newInMemoryScanner(data string, key string, value string, workers int) *jetson.JetsonScanner {
+	return &jetson.JetsonScanner{
 		Data:        []byte(data),
 		SearchKey:   []byte(`"` + key + `":"`),
 		SearchValue: []byte(value),

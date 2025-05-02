@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-type LineScanner struct {
+type JetsonScanner struct {
 	Filename    string
 	SearchKey   []byte
 	SearchValue []byte
@@ -41,7 +41,7 @@ func (r *ScanResult) Print() {
 	)
 }
 
-func (s *LineScanner) ReadFile() error {
+func (s *JetsonScanner) ReadFile() error {
 	start := time.Now()
 	data, err := os.ReadFile(s.Filename)
 	if err != nil {
@@ -60,7 +60,7 @@ func findNextNewline(data []byte, start int) int {
 	return start + i + 1
 }
 
-func (s *LineScanner) Scan() (*ScanResult, error) {
+func (s *JetsonScanner) Scan() (*ScanResult, error) {
 	if s.Data == nil {
 		if err := s.ReadFile(); err != nil {
 			return nil, err
@@ -135,8 +135,8 @@ func (s *LineScanner) Scan() (*ScanResult, error) {
 	}, nil
 }
 
-func NewJetsonScanner(fileName string, searchKey string, searchValue string) *LineScanner {
-	return &LineScanner{
+func NewJetsonScanner(fileName string, searchKey string, searchValue string) *JetsonScanner {
+	return &JetsonScanner{
 		Filename:    fileName,
 		SearchKey:   fmt.Appendf([]byte{}, `"%s":"`, searchKey),
 		SearchValue: []byte(searchValue),
