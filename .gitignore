@@ -1,0 +1,4 @@
+*.pprof
+notes.md
+*.tmp
+demo/ar*
