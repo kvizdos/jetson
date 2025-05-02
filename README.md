@@ -6,6 +6,10 @@ No, it's not a parser. It assumes validity.
 
 2.7M records searched in 130ms.
 
+## A good test dataset
+
+https://www.kaggle.com/datasets/Cornell-University/arxiv
+
 ## Intall
 
 ```
